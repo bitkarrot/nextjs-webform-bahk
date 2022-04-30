@@ -36,9 +36,8 @@ export default function ContactUs() {
 
   useEffect(() => {
     if (token)
-      console.log(`hCaptcha Token: ${token}`);
-      //when token returned enable the submit button
-     // setVerified(true);
+//      console.log(`hCaptcha Token: ${token}`);
+      console.log(`hCaptcha token created`);
   }, [token]);
 
 
