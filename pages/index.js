@@ -21,7 +21,7 @@ export default function Home() {
       </Head>
 
       <main className="">
-        Form here: {hkey}
+        Form here
         <HForm/>
       </main>
     </div>
