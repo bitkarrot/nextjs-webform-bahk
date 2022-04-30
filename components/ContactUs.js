@@ -30,11 +30,15 @@ export default function ContactUs() {
     captchaRef.current.execute();
   };
 
+    const onVerify = e => {
+      setVerified(true);
+    }
+
   useEffect(() => {
     if (token)
       console.log(`hCaptcha Token: ${token}`);
       //when token returned enable the submit button
-      setVerified(true);
+     // setVerified(true);
   }, [token]);
 
 
@@ -221,7 +225,7 @@ export default function ContactUs() {
         <HCaptcha
         sitekey={hcaptchakey}
         onLoad={onLoad}
-        onVerify={setToken}
+        onVerify={onVerify}
         ref={captchaRef}
         />
       </div>
