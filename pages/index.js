@@ -2,10 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import ContactUs from "../components/ContactUs";
 import styles from "../styles/Home.module.css";
-//import HCaptcha from "@hcaptcha/react-hcaptcha";
-import HForm from "../components/HForm";
-
-// const hkey = process.env.NEXT_PUBLIC_HCAPTCHA_API_KEY;
+//import HForm from "../components/HForm";
 
 export default function Home() {
 
@@ -21,8 +18,7 @@ export default function Home() {
       </Head>
 
       <main className="">
-        Form here
-        <HForm/>
+        <ContactUs/>
       </main>
     </div>
   );

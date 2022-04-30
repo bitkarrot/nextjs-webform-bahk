@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+
+const hcaptchakey = process.env.NEXT_PUBLIC_HCAPTCHA_API_KEY
 
 export default function ContactUs() {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+
+  // hcaptcha
+  const [token, setToken] = useState(null);
+  const captchaRef = useRef(null);
 
   //   Form validation
   const [errors, setErrors] = useState({});
@@ -14,6 +21,20 @@ export default function ContactUs() {
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailureMessage, setShowFailureMessage] = useState(false);
+
+  const onLoad = () => {
+    // this reaches out to the hCaptcha JS API and runs the
+    // execute function on it. you can use other functions as
+    // documented here:
+    // https://docs.hcaptcha.com/configuration#jsapi
+    captchaRef.current.execute();
+  };
+
+  useEffect(() => {
+    if (token)
+      console.log(`hCaptcha Token: ${token}`);
+  }, [token]);
+
 
   const handleValidation = () => {
     let tempErrors = {};
@@ -194,7 +215,12 @@ export default function ContactUs() {
             <p className="text-red-500">Message body cannot be empty.</p>
           )}
 
-  
+        <HCaptcha
+        sitekey={hcaptchakey}
+        onLoad={onLoad}
+        onVerify={setToken}
+        ref={captchaRef}
+        />
 
           <div className="flex flex-row items-center justify-start">
             <button
