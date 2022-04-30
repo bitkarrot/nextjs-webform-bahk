@@ -30,9 +30,17 @@ export default function ContactUs() {
     captchaRef.current.execute();
   };
 
-    const onVerify = e => {
+  const onError = (err) => {
+    console.log(`hCaptcha error: ${err}`);
+  }
+  
+  const onExpire = () => {
+    console.log("hCaptcha Token Expired");
+  };
+
+  const onVerify = e => {
       setVerified(true);
-    }
+  }
 
   useEffect(() => {
     if (token)
@@ -225,6 +233,8 @@ export default function ContactUs() {
         sitekey={hcaptchakey}
         onLoad={onLoad}
         onVerify={onVerify}
+        onError={onError}
+        onExpire={onExpire}
         ref={captchaRef}
         />
       </div>
