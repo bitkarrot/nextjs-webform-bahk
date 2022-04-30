@@ -30,15 +30,22 @@ export default function ContactUs() {
     captchaRef.current.execute();
   };
 
-    const onVerify = e => {
+  const onError = (err) => {
+    console.log(`hCaptcha error: ${err}`);
+  }
+  
+  const onExpire = () => {
+    console.log("hCaptcha Token Expired");
+  };
+
+  const onVerify = e => {
       setVerified(true);
-    }
+  }
 
   useEffect(() => {
     if (token)
-      console.log(`hCaptcha Token: ${token}`);
-      //when token returned enable the submit button
-     // setVerified(true);
+//      console.log(`hCaptcha Token: ${token}`);
+      console.log(`hCaptcha token created`);
   }, [token]);
 
 
@@ -226,6 +233,8 @@ export default function ContactUs() {
         sitekey={hcaptchakey}
         onLoad={onLoad}
         onVerify={onVerify}
+        onError={onError}
+        onExpire={onExpire}
         ref={captchaRef}
         />
       </div>
