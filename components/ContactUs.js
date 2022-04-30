@@ -9,10 +9,6 @@ export default function ContactUs() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  // hcaptcha
-  const [token, setToken] = useState(null);
-  const captchaRef = useRef(null);
-
   //   Form validation
   const [errors, setErrors] = useState({});
 
@@ -21,7 +17,11 @@ export default function ContactUs() {
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailureMessage, setShowFailureMessage] = useState(false);
-
+  // hcaptcha
+  const [token, setToken] = useState(null);
+  const [verified, setVerified] = useState(false);
+  const captchaRef = useRef(null);
+   
   const onLoad = () => {
     // this reaches out to the hCaptcha JS API and runs the
     // execute function on it. you can use other functions as
@@ -33,6 +33,8 @@ export default function ContactUs() {
   useEffect(() => {
     if (token)
       console.log(`hCaptcha Token: ${token}`);
+      //when token returned enable the submit button
+      setVerified(true);
   }, [token]);
 
 
@@ -215,16 +217,18 @@ export default function ContactUs() {
             <p className="text-red-500">Message body cannot be empty.</p>
           )}
 
+      <div className="items-left py-8 ">
         <HCaptcha
         sitekey={hcaptchakey}
         onLoad={onLoad}
         onVerify={setToken}
         ref={captchaRef}
         />
-
+      </div>
           <div className="flex flex-row items-center justify-start">
             <button
               type="submit"
+              disabled={verified}
               className="px-10 mt-8 py-2 bg-[#130F49] text-gray-50 font-light rounded-md text-lg flex flex-row items-center"
             >
               {buttonText}
