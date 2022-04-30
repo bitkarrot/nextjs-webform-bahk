@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
-const hcaptchakey = process.env.HCAPTCHA_API_KEY
+const hcaptchakey = process.env.NEXT_PUBLIC_HCAPTCHA_API_KEY
 
 export default function HForm() {
   const [token, setToken] = useState(null);
@@ -23,8 +23,7 @@ export default function HForm() {
   return (
     <form>
       <HCaptcha
-       // sitekey={hcaptchakey}
-        sitekey="b3f31c33-09e9-4ab7-8442-a9a0d2a0fb49"
+        sitekey={hcaptchakey}
         onLoad={onLoad}
         onVerify={setToken}
         ref={captchaRef}

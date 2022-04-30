@@ -2,11 +2,12 @@ import Head from "next/head";
 import Image from "next/image";
 import ContactUs from "../components/ContactUs";
 import styles from "../styles/Home.module.css";
+//import HCaptcha from "@hcaptcha/react-hcaptcha";
 import HForm from "../components/HForm";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+
+// const hkey = process.env.NEXT_PUBLIC_HCAPTCHA_API_KEY;
 
 export default function Home() {
-  const hcaptchakey = process.env.HCAPTCHA_API_KEY
 
   return (
     <div className="">
@@ -20,11 +21,8 @@ export default function Home() {
       </Head>
 
       <main className="">
-        Form here
-        <HCaptcha
-      sitekey={hcaptchakey}
-      onVerify={(token,ekey) => handleVerificationSuccess(token, ekey)}
-    />
+        Form here: {hkey}
+        <HForm/>
       </main>
     </div>
   );
