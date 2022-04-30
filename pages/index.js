@@ -2,8 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import ContactUs from "../components/ContactUs";
 import styles from "../styles/Home.module.css";
+//import HForm from "../components/HForm";
 
 export default function Home() {
+
   return (
     <div className="">
       <Head>
@@ -16,7 +18,7 @@ export default function Home() {
       </Head>
 
       <main className="">
-        <ContactUs />
+        <ContactUs/>
       </main>
     </div>
   );
