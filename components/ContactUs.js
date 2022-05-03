@@ -26,6 +26,7 @@ export default function ContactUs() {
     // this reaches out to the hCaptcha JS API and runs the
     // execute function on it. you can use other functions as
     // documented here:
+    // comment out so it doesn't auto popup on page load
     // https://docs.hcaptcha.com/configuration#jsapi
    //   captchaRef.current.execute();
   };
@@ -46,6 +47,7 @@ export default function ContactUs() {
     if (token)
 //      console.log(`hCaptcha Token: ${token}`);
       console.log(`hCaptcha token created`);
+      setToken(token);
   }, [token]);
 
 
@@ -228,7 +230,7 @@ export default function ContactUs() {
             <p className="text-red-500">Message body cannot be empty.</p>
           )}
 
-      <div className="items-left py-8 ">
+      <div className="items-left py-8">
         <HCaptcha
         sitekey={hcaptchakey}
         onLoad={onLoad}
