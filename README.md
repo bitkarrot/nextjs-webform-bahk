@@ -1,7 +1,9 @@
 # Usage notes
 
 Uses Sendgrid to send emails and Hcaptcha on form. 
-Deployed to Vercel
+Requires API keys from both services above. Can generate on free accounts. 
+
+Deployed to Vercel, target is feedback[at]bitcoin.org.hk
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
